@@ -3,10 +3,15 @@
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
+function getIsTouchDevice() {
+  if (typeof window === 'undefined') return true;
+  return !window.matchMedia('(hover: hover)').matches;
+}
+
 export function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(true);
+  const [isTouchDevice] = useState(getIsTouchDevice);
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -22,10 +27,8 @@ export function CustomCursor() {
   const trail2Y = useSpring(cursorY, { damping: 35, stiffness: 250 });
 
   useEffect(() => {
-    // Detect touch device
-    const hasHover = window.matchMedia('(hover: hover)').matches;
-    setIsTouchDevice(!hasHover);
-    if (!hasHover) return;
+    // Skip on touch devices
+    if (isTouchDevice) return;
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);

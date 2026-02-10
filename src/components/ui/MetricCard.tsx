@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useCallback, useEffect } from 'react';
 import { fadeInUp } from '@/lib/animations';
 
 interface MetricCardProps {
@@ -12,45 +12,50 @@ interface MetricCardProps {
 function AnimatedValue({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
-  const [display, setDisplay] = useState('0');
+  const hasAnimated = useRef(false);
 
-  useEffect(() => {
-    if (!isInView) return;
+  const animate = useCallback(() => {
+    if (!ref.current || hasAnimated.current) return;
 
-    // Extract numeric part
     const match = value.match(/^([\d.]+)/);
     if (!match) {
-      setDisplay(value);
+      if (ref.current) ref.current.textContent = value;
+      hasAnimated.current = true;
       return;
     }
 
+    hasAnimated.current = true;
     const target = parseFloat(match[1]);
     const suffix = value.replace(match[1], '');
     const duration = 1500;
     const startTime = Date.now();
+    const el = ref.current;
 
-    const animate = () => {
+    const step = () => {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = target * eased;
 
-      if (target % 1 !== 0) {
-        setDisplay(current.toFixed(1) + suffix);
-      } else {
-        setDisplay(Math.floor(current) + suffix);
+      if (el) {
+        el.textContent = (target % 1 !== 0)
+          ? current.toFixed(1) + suffix
+          : Math.floor(current) + suffix;
       }
 
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        requestAnimationFrame(step);
       }
     };
 
-    requestAnimationFrame(animate);
-  }, [isInView, value]);
+    requestAnimationFrame(step);
+  }, [value]);
 
-  return <span ref={ref}>{display}</span>;
+  useEffect(() => {
+    if (isInView) animate();
+  }, [isInView, animate]);
+
+  return <span ref={ref}>0</span>;
 }
 
 export function MetricCard({ value, label }: MetricCardProps) {

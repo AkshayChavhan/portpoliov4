@@ -1,13 +1,15 @@
 'use client';
 
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 export function GradientBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const isTouchDevice = typeof window !== 'undefined'
+    ? !window.matchMedia('(hover: hover)').matches
+    : false;
 
   const blob1X = useTransform(mouseX, (v) => v * 0.02);
   const blob1Y = useTransform(mouseY, (v) => v * 0.02);
@@ -15,7 +17,6 @@ export function GradientBackground() {
   const blob2Y = useTransform(mouseY, (v) => v * -0.015);
 
   useEffect(() => {
-    setIsTouchDevice(!window.matchMedia('(hover: hover)').matches);
 
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {

@@ -1,4 +1,4 @@
-import { SITE_CONFIG, SOCIAL_LINKS } from '@/lib/constants';
+import { SITE_CONFIG } from '@/lib/constants';
 
 export function Footer() {
   return (

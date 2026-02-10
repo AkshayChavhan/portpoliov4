@@ -1,16 +1,21 @@
 'use client';
 
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { useRef, useState, useEffect, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 
 interface TiltCardProps {
   children: ReactNode;
   className?: string;
 }
 
+function getIsTouchDevice() {
+  if (typeof window === 'undefined') return true;
+  return !window.matchMedia('(hover: hover)').matches;
+}
+
 export function TiltCard({ children, className = '' }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(true);
+  const [isTouchDevice] = useState(getIsTouchDevice);
 
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
@@ -24,10 +29,6 @@ export function TiltCard({ children, className = '' }: TiltCardProps) {
   // Glare effect position
   const glareX = useTransform(mouseX, [0, 1], ['0%', '100%']);
   const glareY = useTransform(mouseY, [0, 1], ['0%', '100%']);
-
-  useEffect(() => {
-    setIsTouchDevice(!window.matchMedia('(hover: hover)').matches);
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current || isTouchDevice) return;

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import { projects } from '@/lib/data';
-import { slideInLeft, slideInRight, staggerContainer, fadeInUp } from '@/lib/animations';
+import { slideInLeft, slideInRight, staggerContainer } from '@/lib/animations';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { TechBadge } from '@/components/ui/TechBadge';

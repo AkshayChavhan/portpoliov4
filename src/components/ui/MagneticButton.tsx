@@ -1,26 +1,27 @@
 'use client';
 
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { useRef, useState, useEffect, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 
 interface MagneticButtonProps {
   children: ReactNode;
   className?: string;
 }
 
+function getIsTouchDevice() {
+  if (typeof window === 'undefined') return true;
+  return !window.matchMedia('(hover: hover)').matches;
+}
+
 export function MagneticButton({ children, className = '' }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(true);
+  const [isTouchDevice] = useState(getIsTouchDevice);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
   const springX = useSpring(x, { damping: 15, stiffness: 150 });
   const springY = useSpring(y, { damping: 15, stiffness: 150 });
-
-  useEffect(() => {
-    setIsTouchDevice(!window.matchMedia('(hover: hover)').matches);
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current || isTouchDevice) return;
