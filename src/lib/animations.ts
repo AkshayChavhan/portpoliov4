@@ -56,7 +56,7 @@ export const staggerContainer: Variants = {
 
 export const hoverLift = {
   y: -4,
-  transition: { duration: 0.2, ease: 'easeOut' },
+  transition: { duration: 0.2, ease: 'easeOut' as const },
 };
 
 export const tapScale = {
@@ -66,7 +66,7 @@ export const tapScale = {
 
 export const buttonHover = {
   scale: 1.02,
-  transition: { duration: 0.2, ease: 'easeOut' },
+  transition: { duration: 0.2, ease: 'easeOut' as const },
 };
 
 export const buttonTap = {

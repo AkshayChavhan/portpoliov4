@@ -62,21 +62,21 @@ export function Button({
     ghost: ghostStyle,
   };
 
+  const getHoverProps = (v: ButtonVariant) => {
+    const base = { ...buttonHover };
+    if (v === 'primary') return { ...base, boxShadow: '0 6px 20px rgba(99, 102, 241, 0.35)' };
+    if (v === 'secondary') return { ...base, borderColor: 'var(--accent)', color: 'var(--accent)' };
+    if (v === 'ghost') return { ...base, backgroundColor: 'var(--bg-secondary)' };
+    return base;
+  };
+
   if (href) {
     return (
       <motion.a
         href={href}
         className={`${baseStyles} ${variantStyles[variant]} ${className}`}
         style={styleMap[variant]}
-        whileHover={{
-          ...buttonHover,
-          ...(variant === 'secondary'
-            ? { borderColor: 'var(--accent)', color: 'var(--accent)' }
-            : {}),
-          ...(variant === 'ghost'
-            ? { backgroundColor: 'var(--bg-secondary)' }
-            : {}),
-        }}
+        whileHover={getHoverProps(variant)}
         whileTap={buttonTap}
         onClick={() => playClickBeep()}
       >
@@ -90,18 +90,7 @@ export function Button({
       type={type}
       className={`${baseStyles} ${variantStyles[variant]} ${className}`}
       style={styleMap[variant]}
-      whileHover={{
-        ...buttonHover,
-        ...(variant === 'primary'
-          ? { boxShadow: '0 6px 20px rgba(99, 102, 241, 0.35)' }
-          : {}),
-        ...(variant === 'secondary'
-          ? { borderColor: 'var(--accent)', color: 'var(--accent)' }
-          : {}),
-        ...(variant === 'ghost'
-          ? { backgroundColor: 'var(--bg-secondary)' }
-          : {}),
-      }}
+      whileHover={getHoverProps(variant)}
       whileTap={buttonTap}
       onClick={handleClick}
       disabled={disabled}
