@@ -4,8 +4,8 @@ export const SITE_CONFIG = {
   title: 'Full-Stack Developer',
   tagline: 'I build web apps that drive results.',
   description:
-    '3+ years building scalable web applications with React, Next.js, and Node.js. Specializing in full-stack development, e-commerce platforms, and AI-powered applications.',
-  email: 'your@email.com',
+    '5+ years building scalable web applications with React, Next.js, and Node.js. Specializing in full-stack development, e-commerce platforms, and AI-powered applications.',
+  email: 'akshaychavhan676@gmail.com',
   location: 'Pune, India',
   availability: 'Available for Freelance',
   resumeUrl: '/resume/akshay-chavhan-resume.pdf',
@@ -14,8 +14,7 @@ export const SITE_CONFIG = {
 export const SOCIAL_LINKS = {
   github: 'https://github.com/AkshayChavhan',
   linkedin: 'https://linkedin.com/in/akshay-chavhan',
-  email: 'mailto:your@email.com',
-  twitter: 'https://twitter.com',
+  email: 'mailto:akshaychavhan676@gmail.com',
 } as const;
 
 export const NAV_LINKS = [

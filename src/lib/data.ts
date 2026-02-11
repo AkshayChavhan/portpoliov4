@@ -13,7 +13,23 @@ export const projects: Project[] = [
     ],
     tech: ['React 18', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'Stripe', 'Vercel'],
     image: '/images/saakie-preview.png',
-    link: '#',
+    link: 'http://saakie.vercel.app/',
+    github: 'https://github.com/AkshayChavhan',
+    featured: true,
+  },
+  {
+    id: 'msg2ai',
+    title: 'MSG2AI - AI-Powered Messaging Platform',
+    description:
+      'SaaS platform for businesses to send SMS & WhatsApp messages at scale with AI-powered assistants. Features broadcast campaigns, multi-LLM support (OpenAI, Gemini, Groq, Claude), real-time analytics, sentiment analysis, and role-based access control.',
+    metrics: [
+      { label: 'Messaging', value: 'SMS & WhatsApp' },
+      { label: 'AI Models', value: '5+ LLMs' },
+      { label: 'Feature', value: 'Multi-tenant' },
+    ],
+    tech: ['Next.js 15', 'React 19', 'TypeScript', 'Node.js', 'MongoDB', 'Prisma', 'Twilio'],
+    image: '/images/msg2ai-preview.png',
+    link: 'https://dev.msg2ai.xyz/',
     github: '#',
     featured: true,
   },
@@ -30,7 +46,7 @@ export const projects: Project[] = [
     tech: ['Next.js', 'TypeScript', 'Prisma', 'MongoDB'],
     image: '/images/excalidraw-preview.png',
     link: '#',
-    github: '#',
+    github: 'https://github.com/AkshayChavhan',
     featured: false,
   },
 ];
@@ -49,7 +65,7 @@ export const skills: SkillCategory[] = [
   {
     category: 'Database',
     icon: 'Database',
-    items: ['MongoDB', 'PostgreSQL', 'Redis'],
+    items: ['MongoDB', 'PostgreSQL'],
   },
   {
     category: 'AI & LLMs',
@@ -59,7 +75,7 @@ export const skills: SkillCategory[] = [
   {
     category: 'Specializations',
     icon: 'Sparkles',
-    items: ['Full-Stack Development', 'E-Commerce', 'Dashboards'],
+    items: ['Full-Stack Development', 'E-Commerce', 'Dashboards', 'Real-Time Apps', 'Payment Integration', 'API Development', 'AI-Powered Apps', 'Authentication Systems', 'PWA'],
   },
 ];
 
@@ -78,7 +94,7 @@ export const experiences: Experience[] = [
     company: 'Tech Company',
     description:
       'Developed and maintained multiple web applications serving thousands of users. Led frontend architecture decisions, implemented CI/CD pipelines, and mentored junior developers.',
-    tech: ['React', 'Express', 'PostgreSQL', 'Redis', 'Docker'],
+    tech: ['React', 'Express', 'PostgreSQL', 'Docker'],
   },
   {
     period: '2021 - 2022',
@@ -160,7 +176,7 @@ const developer = {
     "Node.js", "TypeScript",
     "MongoDB", "AI/LLMs"
   ],
-  experience: "3+ years",
+  experience: "5+ years",
   available: true,
   passion: "Building apps that
     drive real results"
