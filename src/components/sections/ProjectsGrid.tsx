@@ -14,7 +14,7 @@ export function ProjectsGrid() {
   if (nonFeatured.length === 0) return null;
 
   return (
-    <section id="projects" className="py-16 sm:py-20 lg:py-28 scroll-mt-20">
+    <section className="py-16 sm:py-20 lg:py-28 scroll-mt-20">
       <Container>
         <SectionHeading
           label="PROJECTS"
