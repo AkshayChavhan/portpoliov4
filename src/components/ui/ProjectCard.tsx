@@ -31,7 +31,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         className="aspect-[16/10] overflow-hidden"
         style={{ backgroundColor: 'var(--bg-secondary)' }}
       >
-        {project.image ? (
+        {project.images.length > 0 ? (
           <div
             className="w-full h-full flex items-center justify-center text-6xl transition-transform duration-500 group-hover:scale-105"
             style={{ backgroundColor: 'var(--bg-tertiary)' }}

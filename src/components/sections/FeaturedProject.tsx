@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import { projects } from '@/lib/data';
@@ -9,6 +8,7 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { TechBadge } from '@/components/ui/TechBadge';
 import { MetricCard } from '@/components/ui/MetricCard';
+import { ImageCarousel } from '@/components/ui/ImageCarousel';
 
 const projectEmojis: Record<string, string> = {
   saakie: '🛍️',
@@ -51,13 +51,10 @@ export function FeaturedProject() {
                     borderColor: 'var(--border)',
                   }}
                 >
-                  {project.image ? (
-                    <Image
-                      src={project.image}
+                  {project.images.length > 0 ? (
+                    <ImageCarousel
+                      images={project.images}
                       alt={`${project.title.split(' - ')[0]} Preview`}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
