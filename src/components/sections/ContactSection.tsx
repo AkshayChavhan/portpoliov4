@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Loader2, CheckCircle, Mail, MapPin, Clock, Github, Linkedin, Twitter } from 'lucide-react';
+import { Send, Loader2, CheckCircle, Mail, MapPin, Clock, Github, Linkedin } from 'lucide-react';
 import { SITE_CONFIG, SOCIAL_LINKS, FORMSPREE_ENDPOINT } from '@/lib/constants';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { Container } from '@/components/ui/Container';
@@ -242,7 +242,6 @@ export function ContactSection() {
                 {[
                   { icon: <Github className="w-5 h-5" />, href: SOCIAL_LINKS.github, label: 'GitHub' },
                   { icon: <Linkedin className="w-5 h-5" />, href: SOCIAL_LINKS.linkedin, label: 'LinkedIn' },
-                  { icon: <Twitter className="w-5 h-5" />, href: SOCIAL_LINKS.twitter, label: 'Twitter' },
                   { icon: <Mail className="w-5 h-5" />, href: SOCIAL_LINKS.email, label: 'Email' },
                 ].map((social) => (
                   <a
