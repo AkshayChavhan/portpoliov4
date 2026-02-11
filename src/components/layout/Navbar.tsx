@@ -6,7 +6,6 @@ import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '@/lib/constants';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Button } from '@/components/ui/Button';
-import { playClickBeep } from '@/lib/sounds';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,10 +18,12 @@ export function Navbar() {
   }, []);
 
   const handleNavClick = (href: string) => {
-    playClickBeep();
     setMobileOpen(false);
-    const target = document.querySelector(href);
-    target?.scrollIntoView({ behavior: 'smooth' });
+    // Small delay to let mobile menu close before scrolling
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      target?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
 
   return (
@@ -37,17 +38,26 @@ export function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         {/* Logo */}
-        <a
-          href="#"
-          className="text-xl font-bold transition-colors duration-200"
-          style={{ color: 'var(--text-primary)' }}
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+        <button
+          className="flex items-center gap-2.5 transition-colors duration-200"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          Akshay<span style={{ color: 'var(--accent)' }}>.</span>
-        </a>
+          <span
+            className="text-lg font-bold"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            Akshay
+          </span>
+          <span
+            className="text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded"
+            style={{
+              backgroundColor: 'var(--accent-light)',
+              color: 'var(--accent)',
+            }}
+          >
+            Developer
+          </span>
+        </button>
 
         {/* Desktop nav */}
         <div className="hidden md:flex gap-6 items-center">
@@ -83,10 +93,7 @@ export function Navbar() {
         <div className="flex md:hidden gap-3 items-center">
           <ThemeToggle />
           <button
-            onClick={() => {
-              playClickBeep();
-              setMobileOpen(!mobileOpen);
-            }}
+            onClick={() => setMobileOpen(!mobileOpen)}
             className="w-10 h-10 flex items-center justify-center rounded-lg border transition-colors duration-200"
             style={{
               borderColor: 'var(--border)',
