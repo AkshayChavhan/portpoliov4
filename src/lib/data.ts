@@ -50,7 +50,7 @@ export const projects: Project[] = [
     ],
     tech: ['Next.js', 'TypeScript', 'Prisma', 'MongoDB'],
     images: ['/images/excalidraw-preview.png'],
-    link: '#',
+    link: 'https://excellidraw.vercel.app/',
     github: 'https://github.com/AkshayChavhan',
     featured: false,
   },
