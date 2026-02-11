@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ui/ThemeProvider';
-import { CustomCursor } from '@/components/ui/CustomCursor';
+
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: '%s | Akshay Chavhan',
   },
   description:
-    'Full-stack developer with 3+ years of experience building scalable web applications. Specializing in React, Next.js, Node.js, e-commerce platforms, and AI-powered apps. Available for freelance work.',
+    'Full-stack developer with 5+ years of experience building scalable web applications. Specializing in React, Next.js, Node.js, e-commerce platforms, and AI-powered apps. Available for freelance work.',
   keywords: [
     'full-stack developer',
     'React developer',
@@ -91,7 +91,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-body)' }}>
         <ThemeProvider>
-          <CustomCursor />
           <ScrollProgress />
           <Navbar />
           <main>{children}</main>

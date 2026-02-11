@@ -10,7 +10,6 @@ function getIsTouchDevice() {
 
 export function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isPointer, setIsPointer] = useState(false);
   const [isTouchDevice] = useState(getIsTouchDevice);
 
   const cursorX = useMotionValue(-100);
@@ -36,28 +35,19 @@ export function CustomCursor() {
       setIsVisible(true);
     };
 
-    const handlePointerOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const interactive =
-        target.closest('a, button, [role="button"], input, textarea, select, [data-cursor="pointer"]');
-      setIsPointer(!!interactive);
-    };
-
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
     document.addEventListener('mousemove', moveCursor);
-    document.addEventListener('mouseover', handlePointerOver);
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
       document.removeEventListener('mousemove', moveCursor);
-      document.removeEventListener('mouseover', handlePointerOver);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, isTouchDevice]);
 
   if (isTouchDevice) return null;
 
@@ -93,40 +83,19 @@ export function CustomCursor() {
         }}
       />
 
-      {/* Outer ring */}
-      <motion.div
-        className="fixed top-0 left-0 rounded-full border-2"
-        style={{
-          x: springX,
-          y: springY,
-          borderColor: 'var(--accent)',
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-        animate={{
-          width: isPointer ? 48 : 32,
-          height: isPointer ? 48 : 32,
-          opacity: isVisible ? 0.4 : 0,
-        }}
-        transition={{ duration: 0.2 }}
-      />
-
       {/* Inner dot */}
       <motion.div
         className="fixed top-0 left-0 rounded-full"
         style={{
           x: springX,
           y: springY,
+          width: 6,
+          height: 6,
           backgroundColor: 'var(--accent)',
           translateX: '-50%',
           translateY: '-50%',
-        }}
-        animate={{
-          width: isPointer ? 8 : 6,
-          height: isPointer ? 8 : 6,
           opacity: isVisible ? 1 : 0,
         }}
-        transition={{ duration: 0.15 }}
       />
     </div>
   );
