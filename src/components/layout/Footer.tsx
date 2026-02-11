@@ -11,10 +11,6 @@ export function Footer() {
           &copy; {new Date().getFullYear()} {SITE_CONFIG.fullName}. All rights reserved.
         </p>
 
-        <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
-          Built with Next.js &amp; Tailwind CSS
-        </p>
-
         <div className="flex items-center gap-2">
           <span
             className="w-2 h-2 rounded-full bg-green-500"
