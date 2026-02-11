@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import { projects } from '@/lib/data';
@@ -8,7 +9,6 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { TechBadge } from '@/components/ui/TechBadge';
 import { MetricCard } from '@/components/ui/MetricCard';
-import { playClickBeep } from '@/lib/sounds';
 
 const projectEmojis: Record<string, string> = {
   saakie: '🛍️',
@@ -45,18 +45,30 @@ export function FeaturedProject() {
                 {/* Image */}
                 <motion.div
                   variants={isReversed ? slideInRight : slideInLeft}
-                  className={`rounded-2xl overflow-hidden border aspect-[4/3] flex items-center justify-center ${isReversed ? 'md:order-2' : ''}`}
+                  className={`rounded-2xl overflow-hidden border aspect-[4/3] relative ${isReversed ? 'md:order-2' : ''}`}
                   style={{
                     backgroundColor: 'var(--bg-tertiary)',
                     borderColor: 'var(--border)',
                   }}
                 >
-                  <div className="text-center">
-                    <span className="text-8xl">{emoji}</span>
-                    <p className="mt-4 text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
-                      {project.title.split(' - ')[0]} Preview
-                    </p>
-                  </div>
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={`${project.title.split(' - ')[0]} Preview`}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <span className="text-8xl">{emoji}</span>
+                        <p className="mt-4 text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
+                          {project.title.split(' - ')[0]} Preview
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
 
                 {/* Details */}
@@ -113,7 +125,7 @@ export function FeaturedProject() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => playClickBeep()}
+
                         className="inline-flex items-center gap-2 font-medium transition-colors duration-200"
                         style={{ color: 'var(--accent)' }}
                       >
@@ -126,7 +138,7 @@ export function FeaturedProject() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => playClickBeep()}
+
                         className="inline-flex items-center gap-2 font-medium transition-colors duration-200"
                         style={{ color: 'var(--text-body)' }}
                       >

@@ -28,7 +28,7 @@ export const projects: Project[] = [
       { label: 'Feature', value: 'Multi-tenant' },
     ],
     tech: ['Next.js 15', 'React 19', 'TypeScript', 'Node.js', 'MongoDB', 'Prisma', 'Twilio'],
-    image: '/images/msg2ai-preview.png',
+    image: '/images/msg2ai-dashboard.png',
     link: 'https://dev.msg2ai.xyz/',
     github: '#',
     featured: true,
