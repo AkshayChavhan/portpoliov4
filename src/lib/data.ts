@@ -5,13 +5,13 @@ export const projects: Project[] = [
     id: 'saakie',
     title: 'SAAKIE - Premium E-Commerce Platform',
     description:
-      'Full-stack e-commerce platform for selling premium Indian sarees. Features product catalog, Stripe/Razorpay integration, admin dashboard with real-time analytics, user authentication, and mobile optimization.',
+      'Full-stack e-commerce platform for premium Indian sarees and ethnic wear. Features advanced product catalog with filtering, dual payment gateways (Stripe & Razorpay), admin dashboard with real-time analytics and inventory management, Clerk authentication with role-based access, Cloudinary image optimization, wishlist, reviews & ratings, order tracking, and Instagram social feed integration.',
     metrics: [
-      { label: 'Products', value: '500+' },
-      { label: 'Mobile Conv.', value: '12%+' },
-      { label: 'Load Time', value: '2.8s' },
+      { label: 'Admin', value: 'Full Dashboard' },
+      { label: 'Payments', value: 'Stripe + Razorpay' },
+      { label: 'Auth', value: 'Role-Based' },
     ],
-    tech: ['React 18', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'Stripe', 'Vercel'],
+    tech: ['Next.js 14', 'TypeScript', 'MongoDB', 'Prisma', 'Clerk', 'Stripe', 'Cloudinary'],
     image: '/images/saakie-preview.png',
     link: 'http://saakie.vercel.app/',
     github: 'https://github.com/AkshayChavhan',
