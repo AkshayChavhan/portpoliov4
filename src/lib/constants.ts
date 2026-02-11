@@ -25,7 +25,7 @@ export const NAV_LINKS = [
   { label: 'Contact', href: '#contact' },
 ] as const;
 
-export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xaqdqdpg';
 
 export const BEEP_FREQUENCY = 800;
 export const BEEP_DURATION = 50;
