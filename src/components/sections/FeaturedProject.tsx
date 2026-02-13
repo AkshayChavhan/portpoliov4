@@ -13,6 +13,7 @@ import { ImageCarousel } from '@/components/ui/ImageCarousel';
 const projectEmojis: Record<string, string> = {
   saakie: '🛍️',
   msg2ai: '🤖',
+  ai2story: '🎬',
 };
 
 export function FeaturedProject() {

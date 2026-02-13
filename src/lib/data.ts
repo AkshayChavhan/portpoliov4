@@ -39,6 +39,22 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: 'ai2story',
+    title: 'AI2Story - AI-Powered Video Story Generator',
+    description:
+      'Open-source platform that transforms text prompts into polished short video stories. Generates structured scenes with AI, creates images via Pollinations.ai, produces natural voiceovers with Edge TTS, and composes final videos with Ken Burns effects and crossfade transitions — all using 100% free APIs.',
+    metrics: [
+      { label: 'AI', value: 'Gemini + TTS' },
+      { label: 'Video', value: 'Auto Compose' },
+      { label: 'Cost', value: '100% Free APIs' },
+    ],
+    tech: ['Next.js 16', 'React 19', 'TypeScript', 'MongoDB', 'Prisma', 'Zustand', 'FFmpeg'],
+    images: ['/images/ai2story-preview.png'],
+    link: 'https://ai2story.vercel.app/',
+    github: 'https://github.com/AkshayChavhan',
+    featured: true,
+  },
+  {
     id: 'excalidraw',
     title: 'Excalidraw-Style Drawing App',
     description:
