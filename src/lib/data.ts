@@ -33,7 +33,19 @@ export const projects: Project[] = [
       { label: 'Auth', value: 'Role-Based' },
     ],
     tech: ['Next.js 14', 'TypeScript', 'MongoDB', 'Prisma', 'Clerk', 'Stripe', 'Cloudinary'],
-    images: ['/images/saakie-preview.png'],
+    images: [
+      '/images/saakie1.png',
+      '/images/saakie2.png',
+      '/images/saakie3.png',
+      '/images/saakie4.png',
+      '/images/saakie5.png',
+      '/images/saakie6.png',
+      '/images/saakie7.png',
+      '/images/saakie8.png',
+      '/images/saakie9.png',
+      '/images/saakie10.png',
+      '/images/saakie11.png'
+    ],
     link: 'http://saakie.vercel.app/',
     github: 'https://github.com/AkshayChavhan',
     featured: true,
@@ -61,6 +73,22 @@ export const projects: Project[] = [
     ],
     link: 'https://ai2story.vercel.app/',
     github: 'https://github.com/AkshayChavhan',
+    featured: true,
+  },
+  {
+    id: 'buddies',
+    title: 'Buddies - Group Trip Planner',
+    description:
+      'Web-first trip planner built around the idea that the best trips happen with friends — group trips, shared expenses, and shared memories are first-class. Features smart trip categorization (Past, Active, Upcoming & Drafts with a countdown to your next adventure), email-based buddy invitations, automatic place insights from Wikipedia in your language, a day-by-day itinerary timeline, and a minimum-transaction bill-splitting algorithm so no one overpays. Multi-language and dark mode throughout. Currently in active development.',
+    metrics: [
+      { label: 'Travel', value: 'Group Trips' },
+      { label: 'Expenses', value: 'Smart Bill Split' },
+      { label: 'Status', value: 'In Development' },
+    ],
+    tech: ['Next.js 14', 'TypeScript', 'MongoDB', 'Prisma', 'Better Auth', 'Cloudinary', 'Resend'],
+    images: ['/images/buddies-preview.png'],
+    link: 'https://github.com/AkshayChavhan/buddy',
+    github: 'https://github.com/AkshayChavhan/buddy',
     featured: true,
   },
   {
@@ -100,7 +128,7 @@ export const skills: SkillCategory[] = [
   {
     category: 'AI & LLMs',
     icon: 'Brain',
-    items: ['LLM', 'Vector Databases', 'AI Integration', 'RAG'],
+    items: ['LLM', 'Claude API', 'Anthropic SDK', 'Claude Code', 'Prompt Engineering', 'Vector Databases', 'AI Integration', 'RAG'],
   },
   {
     category: 'Specializations',
@@ -111,28 +139,20 @@ export const skills: SkillCategory[] = [
 
 export const experiences: Experience[] = [
   {
-    period: '2023 - Present',
+    period: 'June 2022 - Present',
     role: 'Full-Stack Developer',
-    company: 'Freelance',
+    company: 'Rethink Technology LLC',
     description:
-      'Building scalable web applications for clients worldwide. Specializing in e-commerce platforms, real-time dashboards, and AI-powered applications. Delivered 10+ projects with a focus on performance and clean code.',
-    tech: ['React', 'Next.js', 'Node.js', 'MongoDB', 'TypeScript'],
+      'Build and maintain full-stack web applications across the complete SDLC with React.js, Next.js, Node.js, Express.js, and MongoDB. Integrate AI capabilities using the OpenAI and Claude APIs, LangChain.js, and the Vercel AI SDK — implementing RAG systems and SSE streaming for real-time features. Also develop DAML smart contracts for enterprise decentralized apps, architected a GCP file-storage pipeline that eliminated orphaned files, and enhanced critical Invoice, Payment, and Purchase Order modules.',
+    tech: ['Next.js', 'React', 'Node.js', 'Express', 'MongoDB', 'TypeScript', 'OpenAI', 'Claude', 'LangChain.js', 'DAML', 'GCP', 'AWS S3'],
   },
   {
-    period: '2022 - 2023',
-    role: 'Full-Stack Developer',
-    company: 'Tech Company',
+    period: 'March 2021 - April 2022',
+    role: 'Junior Frontend Developer',
+    company: 'Newton School',
     description:
-      'Developed and maintained multiple web applications serving thousands of users. Led frontend architecture decisions, implemented CI/CD pipelines, and mentored junior developers.',
-    tech: ['React', 'Express', 'PostgreSQL', 'Docker'],
-  },
-  {
-    period: '2021 - 2022',
-    role: 'Frontend Developer',
-    company: 'Startup',
-    description:
-      'Built responsive user interfaces and collaborated with design teams to deliver pixel-perfect implementations. Gained deep expertise in the React ecosystem and modern CSS.',
-    tech: ['React', 'JavaScript', 'CSS', 'REST APIs', 'Git'],
+      'Built reusable, accessible React.js components with Material UI to improve development efficiency across the team. Refactored existing codebases into custom React hooks to reduce redundancy and improve maintainability, and optimized application performance through efficient coding practices and removal of redundant logic.',
+    tech: ['React', 'JavaScript', 'Material UI', 'CSS', 'Git'],
   },
 ];
 
