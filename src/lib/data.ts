@@ -1,4 +1,4 @@
-import type { Project, SkillCategory, Experience, Testimonial, BlogPost } from '@/types';
+import type { Project, SkillCategory, Experience, Testimonial, BlogPost, Service, Product } from '@/types';
 
 export const projects: Project[] = [
   {
@@ -105,7 +105,7 @@ export const projects: Project[] = [
     images: ['/images/excalidraw-preview.png'],
     link: 'https://excellidraw.vercel.app/',
     github: 'https://github.com/AkshayChavhan',
-    featured: false,
+    featured: true,
   },
 ];
 
@@ -156,63 +156,128 @@ export const experiences: Experience[] = [
   },
 ];
 
-export const testimonials: Testimonial[] = [
+export const services: Service[] = [
   {
-    name: 'Sarah Johnson',
-    role: 'CEO',
-    company: 'TechStart',
-    quote:
-      'Akshay delivered our e-commerce platform ahead of schedule. The attention to detail and performance optimization was exceptional. Our conversion rate improved significantly after launch.',
-    rating: 5,
-    avatar: 'SJ',
+    title: 'Web Design & Development',
+    description:
+      'Fast, responsive, SEO-friendly websites and web apps built with Next.js and React — from marketing sites to complex dashboards, designed to convert visitors into customers.',
+    icon: 'Globe',
+    features: ['Responsive UI', 'SEO Optimized', 'Performance First'],
   },
   {
-    name: 'Michael Chen',
-    role: 'Product Manager',
-    company: 'DataFlow',
-    quote:
-      'Working with Akshay was a great experience. He understood our requirements quickly, communicated proactively, and built exactly what we needed. Highly recommend for any web project.',
-    rating: 5,
-    avatar: 'MC',
+    title: 'Software Development',
+    description:
+      'Custom, scalable software tailored to your business — end-to-end across architecture, API design, and delivery, using the MERN stack, TypeScript, and Prisma.',
+    icon: 'Code2',
+    features: ['Custom Solutions', 'Scalable Architecture', 'Clean Code'],
   },
   {
-    name: 'Priya Sharma',
-    role: 'Founder',
-    company: 'DesignHub',
-    quote:
-      'The dashboard Akshay built transformed how we analyze data. Clean code, great communication, and delivered on time. We continue to work together on new features.',
-    rating: 5,
-    avatar: 'PS',
+    title: 'AI Integration',
+    description:
+      'Bring AI into your product with multi-LLM support (OpenAI, Claude, Gemini, Groq), RAG knowledge systems, chat assistants, and real-time SSE streaming.',
+    icon: 'Brain',
+    features: ['Multi-LLM Support', 'RAG Systems', 'AI Assistants'],
+  },
+  {
+    title: 'API Development',
+    description:
+      'Robust, well-documented REST APIs with Node.js and Express — secure authentication, webhook processing, and integrations that connect your systems together.',
+    icon: 'Webhook',
+    features: ['REST APIs', 'Auth & Security', 'Third-Party Integrations'],
+  },
+  {
+    title: 'E-Commerce Solutions',
+    description:
+      'End-to-end online stores with product catalogs, cart and checkout, payment gateways (Stripe & Razorpay), and admin dashboards for inventory and orders.',
+    icon: 'ShoppingCart',
+    features: ['Payment Gateways', 'Admin Dashboard', 'Inventory Management'],
+  },
+  {
+    title: 'Maintenance & Support',
+    description:
+      'Keep your application healthy with ongoing maintenance, performance optimization, bug fixes, and feature enhancements — with reliable, responsive support.',
+    icon: 'Wrench',
+    features: ['Bug Fixes', 'Performance Tuning', 'Feature Updates'],
   },
 ];
 
+export const products: Product[] = [
+  {
+    title: 'CRM Systems',
+    description:
+      'Manage leads, contacts, and customer relationships with custom pipelines, activity tracking, and analytics built around your sales process.',
+    icon: 'Users',
+  },
+  {
+    title: 'E-Commerce Platforms',
+    description:
+      'Full-featured online stores with catalog, cart, payments, and an admin dashboard — ready to sell products at scale.',
+    icon: 'ShoppingBag',
+  },
+  {
+    title: 'ERP Systems',
+    description:
+      'Unify operations — inventory, invoicing, purchase orders, and reporting — into a single platform that streamlines your business.',
+    icon: 'Boxes',
+  },
+  {
+    title: 'Job Portals',
+    description:
+      'Connect employers and candidates with job listings, applicant tracking, profiles, search, and application management.',
+    icon: 'Briefcase',
+  },
+  {
+    title: 'Learning Management',
+    description:
+      'Deliver courses online with lessons, quizzes, progress tracking, and student dashboards for schools, trainers, and creators.',
+    icon: 'GraduationCap',
+  },
+  {
+    title: 'Hotel Management',
+    description:
+      'Handle bookings, room availability, guest check-in/out, and billing in one streamlined hospitality system.',
+    icon: 'BedDouble',
+  },
+  {
+    title: 'Hospital Management',
+    description:
+      'Coordinate patients, appointments, doctors, and records with secure, role-based access for healthcare teams.',
+    icon: 'Stethoscope',
+  },
+  {
+    title: 'Billing & Invoicing',
+    description:
+      'Generate invoices, track payments, manage taxes, and send reminders with a clean, automated billing workflow.',
+    icon: 'Receipt',
+  },
+];
+
+export const testimonials: Testimonial[] = [];
+
+// Real Medium articles. Add an entry per post — the Blog section auto-hides while empty.
+// Each `url` should be the full Medium article link (cards open it in a new tab).
 export const blogPosts: BlogPost[] = [
   {
-    title: 'How I Optimized QR Scanner Detection from 2.3s to 0.3s',
+    title:
+      'How I Built One AI Platform That Talks to OpenAI, Claude, Gemini, and Groq — and Why Your Business Might Need This',
     excerpt:
-      'A deep dive into the performance optimization techniques that led to an 87% improvement in QR code detection speed using WebGL and advanced algorithms.',
-    category: 'Performance',
-    date: '2026-01-15',
-    slug: '#',
-    readTime: '8 min read',
+      'A practical look at "multi-LLM" architecture — what it means, why it saves money, and how it makes your AI features more reliable.',
+    category: 'AI',
+    date: '2026-06-04',
+    url: 'https://medium.com/@akshaychavhan676/how-i-built-one-ai-platform-that-talks-to-openai-claude-gemini-and-groq-and-why-your-business-9b66870263b7',
+    readTime: '4 min read',
+    image: '/images/blog1.png',
   },
   {
-    title: 'Building Scalable E-Commerce with Next.js',
+    title:
+      'Stop Burning Money on AI Tokens: 8 Techniques That Cut Our LLM Bill Without Hurting Quality',
     excerpt:
-      'Lessons learned from building SAAKIE - a premium e-commerce platform handling 500+ products with Stripe integration and real-time inventory.',
-    category: 'Next.js',
-    date: '2026-01-02',
-    slug: '#',
-    readTime: '12 min read',
-  },
-  {
-    title: 'MongoDB vs PostgreSQL: Choosing the Right Database',
-    excerpt:
-      'A practical comparison based on real-world projects. When to use each, performance benchmarks, and why it matters for your next application.',
-    category: 'Database',
-    date: '2025-12-18',
-    slug: '#',
-    readTime: '10 min read',
+      'Token cost is the silent killer of AI features. Here’s how we made an AI platform dramatically cheaper to run — with code, trade-offs, and the ideas that actually moved the needle.',
+    category: 'AI',
+    date: '2026-06-04',
+    url: 'https://medium.com/@akshaychavhan676/stop-burning-money-on-ai-tokens-8-techniques-that-cut-our-llm-bill-without-hurting-quality-b6611e07a1af',
+    readTime: '5 min read',
+    image: '/images/blog2.png',
   },
 ];
 

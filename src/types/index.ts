@@ -24,6 +24,19 @@ export interface Experience {
   tech: string[];
 }
 
+export interface Service {
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+}
+
+export interface Product {
+  title: string;
+  description: string;
+  icon: string;
+}
+
 export interface Testimonial {
   name: string;
   role: string;
@@ -38,8 +51,9 @@ export interface BlogPost {
   excerpt: string;
   category: string;
   date: string;
-  slug: string;
+  url: string;
   readTime: string;
+  image?: string;
 }
 
 export interface NavLink {

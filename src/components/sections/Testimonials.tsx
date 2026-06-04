@@ -8,6 +8,8 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { TestimonialCard } from '@/components/ui/TestimonialCard';
 
 export function Testimonials() {
+  if (testimonials.length === 0) return null;
+
   return (
     <section
       className="py-16 sm:py-20 lg:py-28 scroll-mt-20"

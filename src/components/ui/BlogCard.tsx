@@ -17,9 +17,12 @@ export function BlogCard({ post }: BlogCardProps) {
   });
 
   return (
-    <motion.article
+    <motion.a
+      href={post.url}
+      target="_blank"
+      rel="noopener noreferrer"
       variants={fadeInUp}
-      className="group rounded-xl border overflow-hidden transition-all duration-300"
+      className="group block rounded-xl border overflow-hidden transition-all duration-300"
       style={{
         backgroundColor: 'var(--card-bg)',
         borderColor: 'var(--border)',
@@ -32,13 +35,25 @@ export function BlogCard({ post }: BlogCardProps) {
     >
       {/* Image area */}
       <div
-        className="aspect-[16/9] relative overflow-hidden"
+        className="aspect-[16/9] relative overflow-hidden border-b"
         style={{
           background: `linear-gradient(135deg, var(--accent-light) 0%, var(--bg-secondary) 100%)`,
+          borderColor: 'var(--border)',
         }}
       >
+        {post.image && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={post.image}
+            alt={post.title}
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        )}
+        {/* Subtle gradient so the category chip stays legible on any image */}
+        <div className="absolute inset-x-0 top-0 h-16 bg-linear-to-b from-black/30 to-transparent pointer-events-none" />
         <span
-          className="absolute top-3 left-3 text-xs font-medium px-3 py-1 rounded-full"
+          className="absolute top-3 left-3 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm"
           style={{
             backgroundColor: 'var(--accent)',
             color: 'white',
@@ -87,6 +102,6 @@ export function BlogCard({ post }: BlogCardProps) {
           </span>
         </div>
       </div>
-    </motion.article>
+    </motion.a>
   );
 }
