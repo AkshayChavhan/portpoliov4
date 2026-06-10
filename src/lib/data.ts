@@ -76,6 +76,27 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: 'captain-kiddo',
+    title: 'Captain Kiddo - Early-Childhood Learning PWA',
+    description:
+      'Gamified, audio-first Progressive Web App that teaches kids aged 3–6 numbers, alphabets, colors, animals, shapes & more. Each module has three sequential difficulty tiers (Easy → Medium → Hard) with tap-to-speak audio, Framer Motion animations, and confetti celebrations. Includes finger-tracing handwriting practice for letters and numbers, a media library of sing-along songs with karaoke-style synced lyrics, lullabies with a fade-out sleep timer, and sleep stories. A PIN-protected parent dashboard tracks per-child progress, weak areas, and daily goals, while a Razorpay flow (server-side HMAC verification) unlocks paid modules and a reward shop lets kids spend earned stars on cosmetics. Installable, offline-ready, and portrait-locked.',
+    metrics: [
+      { label: 'Audience', value: 'Ages 3–6' },
+      { label: 'Payments', value: 'Razorpay (INR)' },
+      { label: 'App', value: 'Installable PWA' },
+    ],
+    tech: ['Next.js 14', 'React 18', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Zustand', 'MongoDB', 'Prisma', 'Howler.js', 'Razorpay'],
+    images: [
+      '/images/captain-kiddo-1.png',
+      '/images/captain-kiddo-2.png',
+      '/images/captain-kiddo-3.png',
+      '/images/captain-kiddo-4.png',
+    ],
+    link: '#',
+    github: 'https://github.com/AkshayChavhan',
+    featured: true,
+  },
+  {
     id: 'buddies',
     title: 'Buddies - Group Trip Planner',
     description:

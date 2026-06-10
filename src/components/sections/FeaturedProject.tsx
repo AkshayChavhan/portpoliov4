@@ -14,6 +14,7 @@ const projectEmojis: Record<string, string> = {
   saakie: '🛍️',
   msg2ai: '🤖',
   ai2story: '🎬',
+  'captain-kiddo': '🧒',
 };
 
 export function FeaturedProject() {
