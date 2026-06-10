@@ -91,6 +91,8 @@ export const projects: Project[] = [
       '/images/captain-kiddo-2.png',
       '/images/captain-kiddo-3.png',
       '/images/captain-kiddo-4.png',
+      '/images/captain-kiddo-5.png',
+      '/images/captain-kiddo-6.png'
     ],
     link: '#',
     github: 'https://github.com/AkshayChavhan',
