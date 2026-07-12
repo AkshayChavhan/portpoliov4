@@ -11,7 +11,9 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { services } from '@/lib/data';
-import { scaleIn, staggerContainer } from '@/lib/animations';
+import { getScaleIn, getStaggerContainer } from '@/lib/animations';
+import { CARD_HOVER_BY_DENSITY, ICON_HOVER_BY_DENSITY } from '@/lib/densityStyles';
+import { useDensity } from '@/components/ui/DensityProvider';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
@@ -25,6 +27,9 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export function ServicesSection() {
+  const { density } = useDensity();
+  const scaleIn = getScaleIn(density);
+  const staggerContainer = getStaggerContainer(density);
   if (services.length === 0) return null;
 
   return (
@@ -56,20 +61,18 @@ export function ServicesSection() {
                 borderColor: 'var(--border)',
                 boxShadow: 'var(--shadow-sm)',
               }}
-              whileHover={{
-                y: -4,
-                boxShadow: 'var(--card-hover-shadow)',
-              }}
+              whileHover={CARD_HOVER_BY_DENSITY[density]}
             >
-              <div
+              <motion.div
                 className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
                 style={{
                   backgroundColor: 'var(--accent-light)',
                   color: 'var(--accent)',
                 }}
+                whileHover={ICON_HOVER_BY_DENSITY[density]}
               >
                 {iconMap[service.icon] || <Sparkles className="w-6 h-6" />}
-              </div>
+              </motion.div>
 
               <h4
                 className="text-lg font-semibold mb-2"
@@ -85,21 +88,42 @@ export function ServicesSection() {
                 {service.description}
               </p>
 
-              <ul className="flex flex-col gap-2">
-                {service.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-center gap-2 text-sm"
-                    style={{ color: 'var(--text-body)' }}
-                  >
-                    <span
-                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: 'var(--accent)' }}
-                    />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+              <motion.ul
+                className="flex flex-col gap-2"
+                variants={density === 'standard' ? undefined : staggerContainer}
+                initial={density === 'standard' ? undefined : 'hidden'}
+                whileInView={density === 'standard' ? undefined : 'visible'}
+                viewport={{ once: true }}
+              >
+                {service.features.map((feature) =>
+                  density === 'standard' ? (
+                    <li
+                      key={feature}
+                      className="flex items-center gap-2 text-sm"
+                      style={{ color: 'var(--text-body)' }}
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: 'var(--accent)' }}
+                      />
+                      {feature}
+                    </li>
+                  ) : (
+                    <motion.li
+                      key={feature}
+                      variants={getScaleIn(density)}
+                      className="flex items-center gap-2 text-sm"
+                      style={{ color: 'var(--text-body)' }}
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: 'var(--accent)' }}
+                      />
+                      {feature}
+                    </motion.li>
+                  )
+                )}
+              </motion.ul>
             </motion.div>
           ))}
         </motion.div>

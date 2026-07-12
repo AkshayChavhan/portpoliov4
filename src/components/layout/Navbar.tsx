@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '@/lib/constants';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { DensitySwitcher } from '@/components/ui/DensitySwitcher';
 import { Button } from '@/components/ui/Button';
 
 export function Navbar() {
@@ -79,6 +80,7 @@ export function Navbar() {
           ))}
 
           <ThemeToggle />
+          <DensitySwitcher />
 
           <Button
             variant="primary"
@@ -140,6 +142,9 @@ export function Navbar() {
                   {link.label}
                 </button>
               ))}
+              <div className="mt-2 flex justify-center">
+                <DensitySwitcher />
+              </div>
               <Button
                 variant="primary"
                 className="mt-2 w-full"

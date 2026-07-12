@@ -2,14 +2,23 @@
 
 import { motion } from 'framer-motion';
 import { projects } from '@/lib/data';
-import { staggerContainer } from '@/lib/animations';
+import { getStaggerContainer } from '@/lib/animations';
+import { useDensity } from '@/components/ui/DensityProvider';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ProjectCard } from '@/components/ui/ProjectCard';
 import { TiltCard } from '@/components/ui/TiltCard';
 
+const TILT_BY_DENSITY = {
+  standard: { tiltRange: 8, glareOpacity: 1, hoverScale: 1.02 },
+  moderate: { tiltRange: 12, glareOpacity: 1, hoverScale: 1.03 },
+  fancy: { tiltRange: 16, glareOpacity: 1, hoverScale: 1.05 },
+} as const;
+
 export function ProjectsGrid() {
+  const { density } = useDensity();
   const nonFeatured = projects.filter((p) => !p.featured);
+  const tilt = TILT_BY_DENSITY[density];
 
   if (nonFeatured.length === 0) return null;
 
@@ -23,14 +32,14 @@ export function ProjectsGrid() {
         />
 
         <motion.div
-          variants={staggerContainer}
+          variants={getStaggerContainer(density)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
           className="grid md:grid-cols-2 gap-6 lg:gap-8"
         >
           {nonFeatured.map((project) => (
-            <TiltCard key={project.id}>
+            <TiltCard key={project.id} {...tilt}>
               <ProjectCard project={project} />
             </TiltCard>
           ))}

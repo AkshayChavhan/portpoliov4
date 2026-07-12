@@ -2,7 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { fadeInUp } from '@/lib/animations';
+import { getFadeInUp } from '@/lib/animations';
+import { CARD_HOVER_BY_DENSITY } from '@/lib/densityStyles';
+import { useDensity } from './DensityProvider';
 import { TechBadge } from './TechBadge';
 import { Skeleton } from './Skeleton';
 import type { Project } from '@/types';
@@ -12,19 +14,18 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const { density } = useDensity();
+
   return (
     <motion.div
-      variants={fadeInUp}
+      variants={getFadeInUp(density)}
       className="group rounded-xl border overflow-hidden transition-all duration-300"
       style={{
         backgroundColor: 'var(--card-bg)',
         borderColor: 'var(--border)',
         boxShadow: 'var(--shadow-sm)',
       }}
-      whileHover={{
-        y: -4,
-        boxShadow: 'var(--card-hover-shadow)',
-      }}
+      whileHover={CARD_HOVER_BY_DENSITY[density]}
     >
       {/* Image area */}
       <div

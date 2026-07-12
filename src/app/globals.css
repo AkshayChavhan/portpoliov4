@@ -59,6 +59,43 @@
 }
 
 /* ========================================
+   DESIGN DENSITY MODE (Standard / Moderate / Fancy)
+   Purely visual (non-JS) knobs consumed directly via
+   inline styles; Framer Motion timing/springs are handled
+   in lib/animations.ts via the useDensity() hook instead.
+   ======================================== */
+
+:root,
+[data-density='standard'] {
+  --density-blob-opacity: 0.35;
+  --density-blob-blur: 80px;
+  --density-hover-lift: 4px;
+  --density-glow: none;
+  /* Section wrapper background: opaque at Standard/Moderate so the
+     ParticleField (Fancy-only) never shows through outside Fancy. */
+  --density-section-bg: var(--bg-secondary);
+}
+
+[data-density='moderate'] {
+  --density-blob-opacity: 0.45;
+  --density-blob-blur: 90px;
+  --density-hover-lift: 6px;
+  --density-glow: 0 0 24px rgba(99, 102, 241, 0.25);
+  --density-section-bg: var(--bg-secondary);
+}
+
+[data-density='fancy'] {
+  --density-blob-opacity: 0.6;
+  --density-blob-blur: 100px;
+  --density-hover-lift: 10px;
+  --density-glow: 0 0 40px rgba(99, 102, 241, 0.4);
+  /* Semi-transparent so the fixed ParticleField canvas stays visible
+     as it scrolls behind every section, not just the ones with no
+     background at all. */
+  --density-section-bg: color-mix(in srgb, var(--bg-secondary) 70%, transparent);
+}
+
+/* ========================================
    BASE STYLES
    ======================================== */
 
@@ -210,4 +247,21 @@ body {
     linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+.bg-gradient-shift {
+  background: linear-gradient(
+    120deg,
+    var(--accent-light) 0%,
+    var(--bg-secondary) 25%,
+    var(--accent-medium) 50%,
+    var(--bg-secondary) 75%,
+    var(--accent-light) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.float-slow {
+  animation: float 6s ease-in-out infinite;
 }

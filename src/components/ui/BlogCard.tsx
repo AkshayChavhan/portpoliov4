@@ -2,7 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
-import { fadeInUp } from '@/lib/animations';
+import { getFadeInUp } from '@/lib/animations';
+import { CARD_HOVER_BY_DENSITY } from '@/lib/densityStyles';
+import { useDensity } from './DensityProvider';
 import type { BlogPost } from '@/types';
 
 interface BlogCardProps {
@@ -10,6 +12,7 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ post }: BlogCardProps) {
+  const { density } = useDensity();
   const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
@@ -21,17 +24,14 @@ export function BlogCard({ post }: BlogCardProps) {
       href={post.url}
       target="_blank"
       rel="noopener noreferrer"
-      variants={fadeInUp}
+      variants={getFadeInUp(density)}
       className="group block rounded-xl border overflow-hidden transition-all duration-300"
       style={{
         backgroundColor: 'var(--card-bg)',
         borderColor: 'var(--border)',
         boxShadow: 'var(--shadow-sm)',
       }}
-      whileHover={{
-        y: -4,
-        boxShadow: 'var(--card-hover-shadow)',
-      }}
+      whileHover={CARD_HOVER_BY_DENSITY[density]}
     >
       {/* Image area */}
       <div

@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/constants';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
+import { getFadeInUp, getStaggerContainer } from '@/lib/animations';
+import { useDensity } from '@/components/ui/DensityProvider';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { MagneticButton } from '@/components/ui/MagneticButton';
@@ -11,6 +12,10 @@ import { GradientBackground } from '@/components/ui/GradientBackground';
 import { CodeEditor } from '@/components/ui/CodeEditor';
 
 export function HeroSection() {
+  const { density } = useDensity();
+  const fadeInUp = getFadeInUp(density);
+  const staggerContainer = getStaggerContainer(density);
+
   return (
     <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-20 min-h-[90vh] flex items-center overflow-hidden">
       <GradientBackground />

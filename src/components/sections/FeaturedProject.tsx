@@ -3,12 +3,14 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import { projects } from '@/lib/data';
-import { slideInLeft, slideInRight, staggerContainer } from '@/lib/animations';
+import { getSlideInLeft, getSlideInRight, getStaggerContainer } from '@/lib/animations';
+import { useDensity } from '@/components/ui/DensityProvider';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { TechBadge } from '@/components/ui/TechBadge';
 import { MetricCard } from '@/components/ui/MetricCard';
 import { ImageCarousel } from '@/components/ui/ImageCarousel';
+import { GradientBackground } from '@/components/ui/GradientBackground';
 
 const projectEmojis: Record<string, string> = {
   saakie: '🛍️',
@@ -20,16 +22,22 @@ const projectEmojis: Record<string, string> = {
 };
 
 export function FeaturedProject() {
+  const { density } = useDensity();
+  const staggerContainer = getStaggerContainer(density);
+  const slideInLeft = getSlideInLeft(density);
+  const slideInRight = getSlideInRight(density);
   const featuredProjects = projects.filter((p) => p.featured);
   if (featuredProjects.length === 0) return null;
 
   return (
     <section
       id="projects"
-      className="py-16 sm:py-20 lg:py-28 scroll-mt-20"
-      style={{ backgroundColor: 'var(--bg-secondary)' }}
+      className={`relative py-16 sm:py-20 lg:py-28 scroll-mt-20 overflow-hidden ${density === 'moderate' ? 'bg-gradient-shift' : ''}`}
+      style={density === 'standard' ? { backgroundColor: 'var(--bg-secondary)' } : undefined}
     >
-      <Container>
+      {density === 'fancy' && <GradientBackground />}
+
+      <Container className="relative z-10">
         <SectionHeading label="FEATURED PROJECTS" title="What I've Built" />
 
         <div className="space-y-16 lg:space-y-24">
@@ -63,7 +71,7 @@ export function FeaturedProject() {
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
-                        <span className="text-8xl">{emoji}</span>
+                        <span className="text-8xl inline-block">{emoji}</span>
                         <p className="mt-4 text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
                           {project.title.split(' - ')[0]} Preview
                         </p>

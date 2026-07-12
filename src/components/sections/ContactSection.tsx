@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Loader2, CheckCircle, Mail, MapPin, Clock, Github, Linkedin } from 'lucide-react';
 import { SITE_CONFIG, SOCIAL_LINKS, FORMSPREE_ENDPOINT } from '@/lib/constants';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
+import { getFadeInUp, getStaggerContainer } from '@/lib/animations';
+import { useDensity } from '@/components/ui/DensityProvider';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Input } from '@/components/ui/Input';
@@ -16,6 +17,9 @@ import { playSuccessBeep, playErrorBeep, playClickBeep } from '@/lib/sounds';
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 export function ContactSection() {
+  const { density } = useDensity();
+  const fadeInUp = getFadeInUp(density);
+  const staggerContainer = getStaggerContainer(density);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [formData, setFormData] = useState({
     name: '',
@@ -57,7 +61,7 @@ export function ContactSection() {
     <section
       id="contact"
       className="py-16 sm:py-20 lg:py-28 scroll-mt-20"
-      style={{ backgroundColor: 'var(--bg-secondary)' }}
+      style={{ backgroundColor: 'var(--density-section-bg)' }}
     >
       <Container>
         <SectionHeading
@@ -140,15 +144,46 @@ export function ContactSection() {
               </Button>
             </MagneticButton>
 
-            {status === 'success' && (
-              <p className="text-sm text-green-600">
-                Thanks for reaching out! I&apos;ll get back to you soon.
-              </p>
-            )}
-            {status === 'error' && (
-              <p className="text-sm text-red-500">
-                Something went wrong. Please try again or email me directly.
-              </p>
+            {density === 'standard' ? (
+              <>
+                {status === 'success' && (
+                  <p className="text-sm text-green-600">
+                    Thanks for reaching out! I&apos;ll get back to you soon.
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="text-sm text-red-500">
+                    Something went wrong. Please try again or email me directly.
+                  </p>
+                )}
+              </>
+            ) : (
+              <AnimatePresence mode="wait">
+                {status === 'success' && (
+                  <motion.p
+                    key="success"
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.25 }}
+                    className="text-sm text-green-600"
+                  >
+                    Thanks for reaching out! I&apos;ll get back to you soon.
+                  </motion.p>
+                )}
+                {status === 'error' && (
+                  <motion.p
+                    key="error"
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.25 }}
+                    className="text-sm text-red-500"
+                  >
+                    Something went wrong. Please try again or email me directly.
+                  </motion.p>
+                )}
+              </AnimatePresence>
             )}
           </motion.form>
 
@@ -275,9 +310,18 @@ export function ContactSection() {
             {/* Schedule a call */}
             <div
               className="rounded-xl p-6 text-center"
-              style={{
-                background: 'linear-gradient(135deg, var(--accent), var(--accent-hover))',
-              }}
+              style={
+                density === 'fancy'
+                  ? {
+                      background:
+                        'linear-gradient(135deg, var(--accent), var(--accent-hover), #c084fc, var(--accent))',
+                      backgroundSize: '300% 300%',
+                      animation: 'gradient-shift 6s ease infinite',
+                    }
+                  : {
+                      background: 'linear-gradient(135deg, var(--accent), var(--accent-hover))',
+                    }
+              }
             >
               <p className="text-white text-sm font-medium mb-3">
                 Prefer a conversation?

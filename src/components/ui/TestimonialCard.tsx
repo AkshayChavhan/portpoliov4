@@ -2,7 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
-import { fadeInUp } from '@/lib/animations';
+import { getFadeInUp } from '@/lib/animations';
+import { CARD_HOVER_BY_DENSITY } from '@/lib/densityStyles';
+import { useDensity } from './DensityProvider';
 import type { Testimonial } from '@/types';
 
 interface TestimonialCardProps {
@@ -10,19 +12,18 @@ interface TestimonialCardProps {
 }
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
+  const { density } = useDensity();
+
   return (
     <motion.div
-      variants={fadeInUp}
+      variants={getFadeInUp(density)}
       className="rounded-xl border p-8 transition-all duration-200"
       style={{
         backgroundColor: 'var(--card-bg)',
         borderColor: 'var(--border)',
         boxShadow: 'var(--shadow-sm)',
       }}
-      whileHover={{
-        y: -4,
-        boxShadow: 'var(--card-hover-shadow)',
-      }}
+      whileHover={CARD_HOVER_BY_DENSITY[density]}
     >
       {/* Quote mark */}
       <div
