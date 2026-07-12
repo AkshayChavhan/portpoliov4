@@ -15,6 +15,8 @@ const projectEmojis: Record<string, string> = {
   msg2ai: '🤖',
   ai2story: '🎬',
   'captain-kiddo': '🧒',
+  'built-environment': '🏗️',
+  'fast-menu': '🍽️',
 };
 
 export function FeaturedProject() {
