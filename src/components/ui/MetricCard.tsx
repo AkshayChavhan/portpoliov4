@@ -70,12 +70,12 @@ export function MetricCard({ value, label }: MetricCardProps) {
       }}
     >
       <p
-        className="text-2xl font-bold"
+        className="text-2xl font-bold wrap-break-word"
         style={{ color: 'var(--accent)' }}
       >
         <AnimatedValue value={value} />
       </p>
-      <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>
+      <p className="text-xs mt-1 wrap-break-word" style={{ color: 'var(--text-muted)' }}>
         {label}
       </p>
     </motion.div>
