@@ -2,18 +2,20 @@
 
 import { motion } from 'framer-motion';
 import { testimonials } from '@/lib/data';
-import { staggerContainer } from '@/lib/animations';
+import { getStaggerContainer } from '@/lib/animations';
+import { useDensity } from '@/components/ui/DensityProvider';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { TestimonialCard } from '@/components/ui/TestimonialCard';
 
 export function Testimonials() {
+  const { density } = useDensity();
   if (testimonials.length === 0) return null;
 
   return (
     <section
       className="py-16 sm:py-20 lg:py-28 scroll-mt-20"
-      style={{ backgroundColor: 'var(--bg-secondary)' }}
+      style={{ backgroundColor: 'var(--density-section-bg)' }}
     >
       <Container>
         <SectionHeading
@@ -23,7 +25,7 @@ export function Testimonials() {
         />
 
         <motion.div
-          variants={staggerContainer}
+          variants={getStaggerContainer(density)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}

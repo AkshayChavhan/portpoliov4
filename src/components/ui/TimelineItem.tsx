@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { fadeInUp } from '@/lib/animations';
+import { getFadeInUp } from '@/lib/animations';
+import { useDensity } from './DensityProvider';
 import { TechBadge } from './TechBadge';
 import type { Experience } from '@/types';
 
@@ -11,9 +12,11 @@ interface TimelineItemProps {
 }
 
 export function TimelineItem({ experience, isLast }: TimelineItemProps) {
+  const { density } = useDensity();
+
   return (
     <motion.div
-      variants={fadeInUp}
+      variants={getFadeInUp(density)}
       className="relative pl-8 sm:pl-10 pb-10"
     >
       {/* Vertical line */}

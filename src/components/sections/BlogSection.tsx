@@ -2,12 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { blogPosts } from '@/lib/data';
-import { staggerContainer } from '@/lib/animations';
+import { getStaggerContainer } from '@/lib/animations';
+import { useDensity } from '@/components/ui/DensityProvider';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { BlogCard } from '@/components/ui/BlogCard';
 
 export function BlogSection() {
+  const { density } = useDensity();
   if (blogPosts.length === 0) return null;
 
   return (
@@ -20,7 +22,7 @@ export function BlogSection() {
         />
 
         <motion.div
-          variants={staggerContainer}
+          variants={getStaggerContainer(density)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}

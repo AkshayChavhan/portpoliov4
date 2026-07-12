@@ -2,11 +2,13 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ui/ThemeProvider';
+import { DensityProvider } from '@/components/ui/DensityProvider';
 
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
+import { FancyCursor } from '@/components/ui/FancyCursor';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -108,13 +110,33 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Inline script to prevent design-density flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var density = localStorage.getItem('density');
+                  if (density === 'standard' || density === 'moderate' || density === 'fancy') {
+                    document.documentElement.setAttribute('data-density', density);
+                  } else {
+                    document.documentElement.setAttribute('data-density', 'standard');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body className="font-sans antialiased" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-body)' }}>
         <ThemeProvider>
-          <ScrollProgress />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <DensityProvider>
+            <ScrollProgress />
+            <FancyCursor />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </DensityProvider>
         </ThemeProvider>
         <ServiceWorkerRegister />
       </body>

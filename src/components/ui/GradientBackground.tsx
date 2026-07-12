@@ -2,8 +2,10 @@
 
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import { useDensity } from './DensityProvider';
 
 export function GradientBackground() {
+  const { density } = useDensity();
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -11,10 +13,18 @@ export function GradientBackground() {
     ? !window.matchMedia('(hover: hover)').matches
     : false;
 
-  const blob1X = useTransform(mouseX, (v) => v * 0.02);
-  const blob1Y = useTransform(mouseY, (v) => v * 0.02);
-  const blob2X = useTransform(mouseX, (v) => v * -0.015);
-  const blob2Y = useTransform(mouseY, (v) => v * -0.015);
+  // Standard keeps the original parallax responsiveness; richer tiers
+  // track the cursor more closely for a livelier feel.
+  const parallaxMultiplier = density === 'standard' ? 1 : density === 'moderate' ? 1.4 : 1.8;
+  const blob1X = useTransform(mouseX, (v) => v * 0.02 * parallaxMultiplier);
+  const blob1Y = useTransform(mouseY, (v) => v * 0.02 * parallaxMultiplier);
+  const blob2X = useTransform(mouseX, (v) => v * -0.015 * parallaxMultiplier);
+  const blob2Y = useTransform(mouseY, (v) => v * -0.015 * parallaxMultiplier);
+
+  // Base opacities scale with the shared --density-blob-opacity CSS var
+  // (0.35 at standard, 0.45 moderate, 0.6 fancy) relative to the original
+  // per-blob values so Standard renders byte-identical to before.
+  const opacityScale = density === 'standard' ? 1 : density === 'moderate' ? 1.3 : 1.8;
 
   useEffect(() => {
 
@@ -46,7 +56,7 @@ export function GradientBackground() {
           left: '10%',
           background: 'radial-gradient(circle, var(--accent) 0%, transparent 70%)',
           filter: 'blur(80px)',
-          opacity: 0.2,
+          opacity: 0.2 * opacityScale,
           x: isTouchDevice ? 0 : blob1X,
           y: isTouchDevice ? 0 : blob1Y,
         }}
@@ -72,7 +82,7 @@ export function GradientBackground() {
           right: '5%',
           background: 'radial-gradient(circle, #c084fc 0%, transparent 70%)',
           filter: 'blur(80px)',
-          opacity: 0.15,
+          opacity: 0.15 * opacityScale,
           x: isTouchDevice ? 0 : blob2X,
           y: isTouchDevice ? 0 : blob2Y,
         }}
@@ -99,7 +109,7 @@ export function GradientBackground() {
           left: '30%',
           background: 'radial-gradient(circle, #60a5fa 0%, transparent 70%)',
           filter: 'blur(80px)',
-          opacity: 0.12,
+          opacity: 0.12 * opacityScale,
         }}
         animate={{
           x: [0, 20, -30, 0],
@@ -113,6 +123,33 @@ export function GradientBackground() {
           delay: 2,
         }}
       />
+
+      {/* Blob 4 - Fancy only: extra accent for a richer, busier backdrop */}
+      {density === 'fancy' && (
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: '30%',
+            height: '30%',
+            top: '55%',
+            right: '20%',
+            background: 'radial-gradient(circle, #f472b6 0%, transparent 70%)',
+            filter: 'blur(90px)',
+            opacity: 0.18,
+          }}
+          animate={{
+            x: [0, -20, 25, 0],
+            y: [0, 20, -15, 0],
+            scale: [1, 1.15, 0.95, 1],
+          }}
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 0.5,
+          }}
+        />
+      )}
     </div>
   );
 }

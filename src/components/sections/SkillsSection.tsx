@@ -3,7 +3,9 @@
 import { motion } from 'framer-motion';
 import { Monitor, Server, Database, Brain, Sparkles } from 'lucide-react';
 import { skills } from '@/lib/data';
-import { scaleIn, staggerContainer, fadeInUp } from '@/lib/animations';
+import { getScaleIn, getStaggerContainer, getFadeInUp } from '@/lib/animations';
+import { CARD_HOVER_BY_DENSITY, ICON_HOVER_BY_DENSITY } from '@/lib/densityStyles';
+import { useDensity } from '@/components/ui/DensityProvider';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { TechBadge } from '@/components/ui/TechBadge';
@@ -17,11 +19,16 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export function SkillsSection() {
+  const { density } = useDensity();
+  const scaleIn = getScaleIn(density);
+  const staggerContainer = getStaggerContainer(density);
+  const fadeInUp = getFadeInUp(density);
+
   return (
     <section
       id="skills"
       className="py-16 sm:py-20 lg:py-28 scroll-mt-20"
-      style={{ backgroundColor: 'var(--bg-secondary)' }}
+      style={{ backgroundColor: 'var(--density-section-bg)' }}
     >
       <Container>
         <SectionHeading
@@ -47,20 +54,18 @@ export function SkillsSection() {
                 borderColor: 'var(--border)',
                 boxShadow: 'var(--shadow-sm)',
               }}
-              whileHover={{
-                y: -4,
-                boxShadow: 'var(--card-hover-shadow)',
-              }}
+              whileHover={CARD_HOVER_BY_DENSITY[density]}
             >
-              <div
+              <motion.div
                 className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
                 style={{
                   backgroundColor: 'var(--accent-light)',
                   color: 'var(--accent)',
                 }}
+                whileHover={ICON_HOVER_BY_DENSITY[density]}
               >
                 {iconMap[skill.icon] || <Sparkles className="w-6 h-6" />}
-              </div>
+              </motion.div>
 
               <h4
                 className="text-lg font-semibold mb-3"

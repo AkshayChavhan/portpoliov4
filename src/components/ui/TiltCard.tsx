@@ -6,6 +6,12 @@ import { useRef, useState, type ReactNode } from 'react';
 interface TiltCardProps {
   children: ReactNode;
   className?: string;
+  /** Max rotation in degrees at either edge. Defaults to the original 8°. */
+  tiltRange?: number;
+  /** Peak glare opacity on hover. Defaults to the original 1. */
+  glareOpacity?: number;
+  /** Peak hover scale. Defaults to the original 1.02. */
+  hoverScale?: number;
 }
 
 function getIsTouchDevice() {
@@ -13,15 +19,21 @@ function getIsTouchDevice() {
   return !window.matchMedia('(hover: hover)').matches;
 }
 
-export function TiltCard({ children, className = '' }: TiltCardProps) {
+export function TiltCard({
+  children,
+  className = '',
+  tiltRange = 8,
+  glareOpacity = 1,
+  hoverScale = 1.02,
+}: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isTouchDevice] = useState(getIsTouchDevice);
 
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
-  const rotateX = useTransform(mouseY, [0, 1], [8, -8]);
-  const rotateY = useTransform(mouseX, [0, 1], [-8, 8]);
+  const rotateX = useTransform(mouseY, [0, 1], [tiltRange, -tiltRange]);
+  const rotateY = useTransform(mouseX, [0, 1], [-tiltRange, tiltRange]);
 
   const springRotateX = useSpring(rotateX, { damping: 20, stiffness: 300 });
   const springRotateY = useSpring(rotateY, { damping: 20, stiffness: 300 });
@@ -68,7 +80,7 @@ export function TiltCard({ children, className = '' }: TiltCardProps) {
         }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: hoverScale }}
         transition={{ duration: 0.2 }}
       >
         {children}
@@ -80,7 +92,7 @@ export function TiltCard({ children, className = '' }: TiltCardProps) {
             background: `radial-gradient(circle at ${glareX}px ${glareY}px, rgba(255,255,255,0.15) 0%, transparent 60%)`,
             opacity: 0,
           }}
-          whileHover={{ opacity: 1 }}
+          whileHover={{ opacity: glareOpacity }}
           transition={{ duration: 0.3 }}
         />
       </motion.div>
