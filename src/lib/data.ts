@@ -96,6 +96,30 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: 'excalidraw',
+    title: 'Excalidraw-Style Drawing App',
+    description:
+      'Comprehensive collaborative drawing application with authentication, real-time collaboration, and AI-powered features. Built with modern web technologies for a seamless drawing experience.',
+    metrics: [
+      { label: 'Feature', value: 'Real-time Sync' },
+      { label: 'Feature', value: 'AI Integration' },
+      { label: 'Feature', value: 'Multi-user' },
+    ],
+    tech: ['Next.js', 'TypeScript', 'Prisma', 'MongoDB'],
+    images: [
+      '/images/excelledraw01.png',
+      '/images/excelledraw02.png',
+      '/images/excelledraw03.png',
+      '/images/excelledraw04.png',
+      '/images/excelledraw05.png',
+      '/images/excelledraw06.png',
+      '/images/excelledraw07.png',
+    ],
+    link: 'https://excellidraw.vercel.app/',
+    github: 'https://github.com/AkshayChavhan',
+    featured: true,
+  },
+  {
     id: 'ai2story',
     title: 'AI2Story - AI-Powered Video Story Generator',
     description:
@@ -157,22 +181,6 @@ export const projects: Project[] = [
     images: ['/images/buddies-preview.png'],
     link: 'https://github.com/AkshayChavhan/buddy',
     github: 'https://github.com/AkshayChavhan/buddy',
-    featured: true,
-  },
-  {
-    id: 'excalidraw',
-    title: 'Excalidraw-Style Drawing App',
-    description:
-      'Comprehensive collaborative drawing application with authentication, real-time collaboration, and AI-powered features. Built with modern web technologies for a seamless drawing experience.',
-    metrics: [
-      { label: 'Feature', value: 'Real-time Sync' },
-      { label: 'Feature', value: 'AI Integration' },
-      { label: 'Feature', value: 'Multi-user' },
-    ],
-    tech: ['Next.js', 'TypeScript', 'Prisma', 'MongoDB'],
-    images: ['/images/excalidraw-preview.png'],
-    link: 'https://excellidraw.vercel.app/',
-    github: 'https://github.com/AkshayChavhan',
     featured: true,
   },
 ];
