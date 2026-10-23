@@ -35,8 +35,8 @@ export const projects: Project[] = [
     tech: ['Next.js 14', 'TypeScript', 'MongoDB', 'Prisma', 'Clerk', 'Stripe', 'Cloudinary'],
     images: [
       '/images/saakie1.png',
-      '/images/saakie2.png',
       '/images/saakie3.png',
+      '/images/saakie2.png',
       '/images/saakie4.png',
       '/images/saakie5.png',
       '/images/saakie6.png',
@@ -46,8 +46,50 @@ export const projects: Project[] = [
       '/images/saakie10.png',
       '/images/saakie11.png'
     ],
-    link: 'http://saakie.vercel.app/',
+    link: 'https://saakiebyknk.in',
     github: 'https://github.com/AkshayChavhan',
+    featured: true,
+  },
+  {
+    id: 'ai-ambassador',
+    title: 'AI Ambassador - AI Guest Assistants for Hospitality',
+    description:
+      'AI-powered platform for hotels, vacation rentals, event venues and nonprofits. Each sector gets its own assistant that answers guest and attendee questions around the clock on WhatsApp, automates check-ins and workflows, and coordinates vendors and tasks. It also offers dynamic pricing and demand forecasting, a unified analytics dashboard, GDPR-ready security, role-based access for multiple businesses, and integrations with PMS, booking engines, ticketing tools, CRMs and donation platforms.',
+    metrics: [
+      { label: 'Sectors', value: '4 industries' },
+      { label: 'Assistant', value: '24/7 on WhatsApp' },
+      { label: 'Access', value: 'Multi-business roles' },
+    ],
+    tech: ['Next.js', 'OpenAI', 'Prisma', 'MongoDB', 'Twilio'],
+    images: [
+      '/images/ai-ambassador-1.webp',
+      '/images/ai-ambassador-2.webp',
+      '/images/ai-ambassador-3.webp',
+      '/images/ai-ambassador-4.webp',
+    ],
+    link: 'https://ai-ambassador-website.vercel.app/',
+    github: '#',
+    featured: true,
+  },
+  {
+    id: 'wa-campaigns',
+    title: 'WhatsApp Campaigns - WhatsApp Marketing at Scale',
+    description:
+      'Multi-tenant SaaS for creating and running WhatsApp marketing campaigns at scale on the Twilio WhatsApp Business API. Businesses send bulk messages built from 500+ ready-made templates, handle replies in a shared inbox, embed chat widgets on their websites, and connect other systems through API keys and webhooks. Includes team and user access management, billing and an activity log for auditing. New workspaces start on a shared sender with free messages, then connect their own branded WhatsApp number.',
+    metrics: [
+      { label: 'Templates', value: '500+' },
+      { label: 'Messaging', value: 'Twilio WhatsApp' },
+      { label: 'Platform', value: 'Multi-tenant' },
+    ],
+    tech: ['Next.js', 'Twilio', 'WhatsApp Business API', 'Webhooks'],
+    images: [
+      '/images/wa-campaigns-1.webp',
+      '/images/wa-campaigns-2.webp',
+      '/images/wa-campaigns-3.webp',
+      '/images/wa-campaigns-4.webp',
+    ],
+    link: 'https://www.wa-campaigns.com/',
+    github: '#',
     featured: true,
   },
   {
@@ -82,13 +124,12 @@ export const projects: Project[] = [
       { label: 'Security', value: 'Postgres RLS' },
     ],
     tech: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Zod'],
+    // fast-menu3 (pricing table), fast-menu4 (login with a personal email) and fast-menu6 (glitchy QR
+    // render) are left out on purpose, matching the Keystone Lab site.
     images: [
       '/images/fast-menu1.png',
       '/images/fast-menu2.png',
-      '/images/fast-menu3.png',
-      '/images/fast-menu4.png',
       '/images/fast-menu5.png',
-      '/images/fast-menu6.png',
       '/images/fast-menu7.png',
     ],
     link: 'https://fast-menu-zeta.vercel.app/',
@@ -113,7 +154,6 @@ export const projects: Project[] = [
       '/images/excelledraw04.png',
       '/images/excelledraw05.png',
       '/images/excelledraw06.png',
-      '/images/excelledraw07.png',
     ],
     link: 'https://excellidraw.vercel.app/',
     github: 'https://github.com/AkshayChavhan',
