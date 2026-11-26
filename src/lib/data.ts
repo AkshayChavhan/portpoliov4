@@ -244,7 +244,7 @@ export const skills: SkillCategory[] = [
   {
     category: 'AI & LLMs',
     icon: 'Brain',
-    items: ['LLM', 'Claude API', 'Anthropic SDK', 'Claude Code', 'Prompt Engineering', 'Vector Databases', 'AI Integration', 'RAG'],
+    items: ['LLM', 'Claude API', 'Anthropic SDK', 'Claude Code', 'LangChain', 'LangGraph', 'Prompt Engineering', 'Vector Databases', 'AI Integration', 'RAG'],
   },
   {
     category: 'Specializations',
