@@ -53,12 +53,12 @@ export function FeaturedProject() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: '-100px' }}
-                className={`grid md:grid-cols-2 gap-8 lg:gap-12 items-center`}
+                className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center md:items-stretch"
               >
                 {/* Image */}
                 <motion.div
                   variants={isReversed ? slideInRight : slideInLeft}
-                  className={`rounded-2xl overflow-hidden border aspect-[4/3] relative ${isReversed ? 'md:order-2' : ''}`}
+                  className={`rounded-2xl overflow-hidden border relative aspect-[4/3] md:aspect-auto md:h-full md:min-h-[360px] ${isReversed ? 'md:order-2' : ''}`}
                   style={{
                     backgroundColor: 'var(--bg-tertiary)',
                     borderColor: 'var(--border)',
