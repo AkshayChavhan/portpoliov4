@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Briefcase, Code2, Zap } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { SITE_CONFIG } from '@/lib/constants';
+import { LocalTime } from '@/components/ui/LocalTime';
 
 const stats = [
   { label: 'Experience', value: '5+ Years' },
@@ -59,6 +60,7 @@ export function CodeEditor() {
             </p>
             <p className="text-xs flex items-center gap-1.5 mt-0.5" style={{ color: 'var(--text-muted)' }}>
               <MapPin className="w-3 h-3" />
+              <LocalTime />
               {SITE_CONFIG.location}
             </p>
           </div>

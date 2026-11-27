@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/Button';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { GradientBackground } from '@/components/ui/GradientBackground';
 import { CodeEditor } from '@/components/ui/CodeEditor';
+import { LocalTime } from '@/components/ui/LocalTime';
 
 export function HeroSection() {
   const { density } = useDensity();
@@ -103,6 +104,7 @@ export function HeroSection() {
               className="mt-8 text-sm flex items-center gap-2"
               style={{ color: 'var(--text-muted)' }}
             >
+              <LocalTime />
               <span>{SITE_CONFIG.location}</span>
               <span>&middot;</span>
               <span>{SITE_CONFIG.title}</span>

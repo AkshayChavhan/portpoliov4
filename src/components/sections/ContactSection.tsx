@@ -13,6 +13,7 @@ import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { playSuccessBeep, playErrorBeep, playClickBeep } from '@/lib/sounds';
+import { LocalTime } from '@/components/ui/LocalTime';
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -244,7 +245,10 @@ export function ContactSection() {
                   >
                     <MapPin className="w-4 h-4" />
                   </div>
-                  {SITE_CONFIG.location}
+                  <span className="flex items-center gap-1.5">
+                    <LocalTime />
+                    {SITE_CONFIG.location}
+                  </span>
                 </div>
 
                 <div
