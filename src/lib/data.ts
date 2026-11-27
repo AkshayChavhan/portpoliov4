@@ -51,6 +51,27 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: 'rethink-labs',
+    title: 'Rethink Labs Consulting - AI & Blockchain Company Website',
+    description:
+      'Company business website for Rethink Labs Consulting, a firm that helps businesses use AI and blockchain to optimize operations, strengthen security and drive innovation. The site presents AI strategy consulting, custom model development, AI-powered data analytics, intelligent chatbots, and hands-on training and support, alongside blockchain services for enterprise integration, smart contract development and digital identity. It walks visitors through the process from strategy to solution design to implementation, with a focus on measurable ROI, and showcases 21 delivered projects. Built full stack, including the chatbot and back end.',
+    metrics: [
+      { label: 'Services', value: 'AI + Blockchain' },
+      { label: 'Portfolio', value: '21 Projects' },
+      { label: 'Feature', value: 'AI Chatbot' },
+    ],
+    tech: ['Next.js', 'Chatbot', 'Front-End Development', 'Back-End Development'],
+    images: [
+      '/website/website1.png',
+      '/website/website2.png',
+      '/website/website3.png',
+      '/website/website4.png',
+    ],
+    link: '#',
+    github: '#',
+    featured: true,
+  },
+  {
     id: 'ai-ambassador',
     title: 'AI Ambassador - AI Guest Assistants for Hospitality',
     description:
