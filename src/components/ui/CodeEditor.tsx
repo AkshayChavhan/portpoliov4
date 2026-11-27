@@ -1,9 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MapPin, Briefcase, Code2, Zap } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { SITE_CONFIG } from '@/lib/constants';
+import { LocalTime } from '@/components/ui/LocalTime';
 
 const stats = [
   { label: 'Experience', value: '5+ Years' },
@@ -37,15 +39,15 @@ export function CodeEditor() {
         style={{ borderColor: 'var(--border)' }}
       >
         <motion.div variants={fadeInUp} className="flex items-center gap-4">
-          <div
-            className="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold shrink-0"
-            style={{
-              background: 'linear-gradient(135deg, var(--accent), var(--accent-hover))',
-              color: 'white',
-            }}
-          >
-            AC
-          </div>
+          <Image
+            src="/images/profile.jpg"
+            alt={SITE_CONFIG.fullName}
+            width={56}
+            height={56}
+            priority
+            className="w-14 h-14 rounded-full object-cover object-top shrink-0 border-2"
+            style={{ borderColor: 'var(--accent)' }}
+          />
           <div>
             <h3
               className="text-lg font-bold"
@@ -59,6 +61,7 @@ export function CodeEditor() {
             </p>
             <p className="text-xs flex items-center gap-1.5 mt-0.5" style={{ color: 'var(--text-muted)' }}>
               <MapPin className="w-3 h-3" />
+              <LocalTime />
               {SITE_CONFIG.location}
             </p>
           </div>

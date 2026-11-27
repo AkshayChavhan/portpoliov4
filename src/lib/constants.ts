@@ -14,6 +14,7 @@ export const SITE_CONFIG = {
 export const SOCIAL_LINKS = {
   github: 'https://github.com/AkshayChavhan',
   linkedin: 'https://linkedin.com/in/akshay-chavhan',
+  upwork: 'https://www.upwork.com/freelancers/~01d7d91a2671b03f0f',
   email: 'mailto:akshaychavhan676@gmail.com',
 } as const;
 

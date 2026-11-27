@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ui/ThemeProvider';
 import { DensityProvider } from '@/components/ui/DensityProvider';
+import { MotionProvider } from '@/components/ui/MotionProvider';
 
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
 import { Navbar } from '@/components/layout/Navbar';
@@ -130,13 +131,15 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-body)' }}>
         <ThemeProvider>
-          <DensityProvider>
-            <ScrollProgress />
-            <FancyCursor />
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-          </DensityProvider>
+          <MotionProvider>
+            <DensityProvider>
+              <ScrollProgress />
+              <FancyCursor />
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
+            </DensityProvider>
+          </MotionProvider>
         </ThemeProvider>
         <ServiceWorkerRegister />
       </body>

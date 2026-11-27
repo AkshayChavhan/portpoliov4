@@ -19,6 +19,7 @@ const projectEmojis: Record<string, string> = {
   'captain-kiddo': '🧒',
   'built-environment': '🏗️',
   'fast-menu': '🍽️',
+  'rethink-labs': '🧠',
 };
 
 export function FeaturedProject() {
