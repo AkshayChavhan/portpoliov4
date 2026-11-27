@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { useDensity } from './DensityProvider';
 
@@ -9,6 +9,9 @@ export function GradientBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  // Ease the blobs toward the cursor instead of snapping to every mousemove.
+  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20, mass: 1 });
+  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20, mass: 1 });
   const isTouchDevice = typeof window !== 'undefined'
     ? !window.matchMedia('(hover: hover)').matches
     : false;
@@ -16,10 +19,10 @@ export function GradientBackground() {
   // Standard keeps the original parallax responsiveness; richer tiers
   // track the cursor more closely for a livelier feel.
   const parallaxMultiplier = density === 'standard' ? 1 : density === 'moderate' ? 1.4 : 1.8;
-  const blob1X = useTransform(mouseX, (v) => v * 0.02 * parallaxMultiplier);
-  const blob1Y = useTransform(mouseY, (v) => v * 0.02 * parallaxMultiplier);
-  const blob2X = useTransform(mouseX, (v) => v * -0.015 * parallaxMultiplier);
-  const blob2Y = useTransform(mouseY, (v) => v * -0.015 * parallaxMultiplier);
+  const blob1X = useTransform(smoothX, (v) => v * 0.02 * parallaxMultiplier);
+  const blob1Y = useTransform(smoothY, (v) => v * 0.02 * parallaxMultiplier);
+  const blob2X = useTransform(smoothX, (v) => v * -0.015 * parallaxMultiplier);
+  const blob2Y = useTransform(smoothY, (v) => v * -0.015 * parallaxMultiplier);
 
   // Base opacities scale with the shared --density-blob-opacity CSS var
   // (0.35 at standard, 0.45 moderate, 0.6 fancy) relative to the original

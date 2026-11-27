@@ -35,8 +35,8 @@ export function TiltCard({
   const rotateX = useTransform(mouseY, [0, 1], [tiltRange, -tiltRange]);
   const rotateY = useTransform(mouseX, [0, 1], [-tiltRange, tiltRange]);
 
-  const springRotateX = useSpring(rotateX, { damping: 20, stiffness: 300 });
-  const springRotateY = useSpring(rotateY, { damping: 20, stiffness: 300 });
+  const springRotateX = useSpring(rotateX, { damping: 30, stiffness: 200 });
+  const springRotateY = useSpring(rotateY, { damping: 30, stiffness: 200 });
 
   // Glare effect position
   const glareX = useTransform(mouseX, [0, 1], ['0%', '100%']);

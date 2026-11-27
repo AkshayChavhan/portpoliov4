@@ -15,15 +15,15 @@ export function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 700 };
+  const springConfig = { damping: 40, stiffness: 600, mass: 0.5 };
   const springX = useSpring(cursorX, springConfig);
   const springY = useSpring(cursorY, springConfig);
 
   // Trail dots with increasing delay
-  const trail1X = useSpring(cursorX, { damping: 30, stiffness: 400 });
-  const trail1Y = useSpring(cursorY, { damping: 30, stiffness: 400 });
-  const trail2X = useSpring(cursorX, { damping: 35, stiffness: 250 });
-  const trail2Y = useSpring(cursorY, { damping: 35, stiffness: 250 });
+  const trail1X = useSpring(cursorX, { damping: 35, stiffness: 300, mass: 0.6 });
+  const trail1Y = useSpring(cursorY, { damping: 35, stiffness: 300, mass: 0.6 });
+  const trail2X = useSpring(cursorX, { damping: 35, stiffness: 180, mass: 0.7 });
+  const trail2Y = useSpring(cursorY, { damping: 35, stiffness: 180, mass: 0.7 });
 
   useEffect(() => {
     // Skip on touch devices

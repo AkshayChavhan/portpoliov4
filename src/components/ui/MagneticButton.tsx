@@ -20,8 +20,8 @@ export function MagneticButton({ children, className = '' }: MagneticButtonProps
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const springX = useSpring(x, { damping: 15, stiffness: 150 });
-  const springY = useSpring(y, { damping: 15, stiffness: 150 });
+  const springX = useSpring(x, { damping: 20, stiffness: 150, mass: 0.6 });
+  const springY = useSpring(y, { damping: 20, stiffness: 150, mass: 0.6 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current || isTouchDevice) return;
