@@ -114,27 +114,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: 'built-environment',
-    title: 'BuiltEnvironment Studio - Web & 3D for Real Estate',
-    description:
-      'Marketing and demo site for a web agency serving architects, civil engineers, builders, and interior designers. Headline feature is an interactive 3D flat/society showcase used to win builders as clients, with three browser-native tiers: 360° room-to-room tours (Pannellum), an orbitable 3D tower with live finish configurator (React Three Fiber), and a photoreal LiDAR show-flat walkthrough with an AR model lane (Gaussian splats + model-viewer).',
-    metrics: [
-      { label: 'Showcase', value: '3D Tower + AR' },
-      { label: 'Tours', value: '360° Walkthroughs' },
-      { label: 'Tech', value: 'Gaussian Splats' },
-    ],
-    tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS', 'React Three Fiber', 'Three.js', 'Framer Motion', 'Zod'],
-    images: [
-      '/images/built-environment1.png',
-      '/images/built-environment2.png',
-      '/images/built-environment3.png',
-      '/images/built-environment5.png',
-    ],
-    link: 'https://built-env.vercel.app/',
-    github: 'https://github.com/AkshayChavhan',
-    featured: true,
-  },
-  {
     id: 'fast-menu',
     title: 'Fast Menu - QR Digital Menus for Hospitality',
     description:
@@ -155,6 +134,27 @@ export const projects: Project[] = [
     ],
     link: 'https://fast-menu-zeta.vercel.app/',
     github: 'https://github.com/AkshayChavhan/fast_menu',
+    featured: true,
+  },
+  {
+    id: 'built-environment',
+    title: 'BuiltEnvironment Studio - Web & 3D for Real Estate',
+    description:
+      'Marketing and demo site for a web agency serving architects, civil engineers, builders, and interior designers. Headline feature is an interactive 3D flat/society showcase used to win builders as clients, with three browser-native tiers: 360° room-to-room tours (Pannellum), an orbitable 3D tower with live finish configurator (React Three Fiber), and a photoreal LiDAR show-flat walkthrough with an AR model lane (Gaussian splats + model-viewer).',
+    metrics: [
+      { label: 'Showcase', value: '3D Tower + AR' },
+      { label: 'Tours', value: '360° Walkthroughs' },
+      { label: 'Tech', value: 'Gaussian Splats' },
+    ],
+    tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS', 'React Three Fiber', 'Three.js', 'Framer Motion', 'Zod'],
+    images: [
+      '/images/built-environment1.png',
+      '/images/built-environment2.png',
+      '/images/built-environment3.png',
+      '/images/built-environment5.png',
+    ],
+    link: 'https://built-env.vercel.app/',
+    github: 'https://github.com/AkshayChavhan',
     featured: true,
   },
   {
